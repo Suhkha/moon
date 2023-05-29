@@ -5,15 +5,17 @@ const btnSend = document.querySelector("#send");
 const socket = io();
 
 socket.on("connect", () => {
-  console.log("connect");
   labelOffline.style.display = "none";
   labelOnline.style.display = "";
 });
 
 socket.on("disconnect", () => {
-  console.log("disconnect");
   labelOffline.style.display = "";
   labelOnline.style.display = "none";
+});
+
+socket.on("send-message", (payload) => {
+  console.log(payload);
 });
 
 btnSend.addEventListener("click", () => {
@@ -23,5 +25,7 @@ btnSend.addEventListener("click", () => {
     user: "suhkha",
     message,
   };
-  socket.emit("send-message", payload);
+  socket.emit("send-message", payload, (id) => {
+    console.log("from server", id);
+  });
 });
