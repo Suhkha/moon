@@ -29,14 +29,12 @@ class Server {
 
   sockets() {
     this.io.on("connection", (socket) => {
-      console.log("connect", socket.id);
+      socket.on("disconnect", () => {});
 
-      socket.on("disconnect", () => {
-        console.log("disconnect", socket.id);
-      });
-
-      socket.on("send-message", (payload) => {
-        console.log(payload);
+      socket.on("send-message", (payload, callback) => {
+        const id = 123456;
+        callback(id);
+        //this.io.emit("send-message", payload);
       });
     });
   }
