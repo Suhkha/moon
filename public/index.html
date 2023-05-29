@@ -16,6 +16,27 @@
     <h1 class="mt-2">Socket Client</h1>
     <hr />
 
+    <div>
+      Status:
+      <span id="label-online" class="badge bg-success">Online</span>
+      <span id="label-offline" class="badge bg-danger">Offline</span>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          id="message"
+          placeholder="message"
+        />
+      </div>
+      <div class="col">
+        <button class="btn btn-primary" id="send">Send</button>
+      </div>
+    </div>
+
+    <script src="./socket.io/socket.io.js"></script>
     <script src="./js/socket-client.js"></script>
   </body>
 </html>
